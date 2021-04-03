@@ -51,10 +51,7 @@ const Home = (): JSX.Element => {
           <img src={product.image} alt={product.title} />
           <strong>{product.title}</strong>
           <span>
-            {new Intl.NumberFormat("pt-BR",{
-              style: 'currency',
-              currency: 'BRL'
-            }).format(product.price)}
+            {formatPrice(product.price)}
           </span>
           <button
             type="button"
