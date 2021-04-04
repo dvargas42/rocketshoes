@@ -36,7 +36,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const addProduct = async (productId: number) => {
     try {
-      const stockProductAmount = await api.get(`stocks/${productId}`)
+      const stockProductAmount = await api.get(`stock/${productId}`)
         .then(response => response.data.amount)
       
       const cartProductIndex = cart.findIndex(product => product.id === productId)
@@ -48,12 +48,12 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart( [...cart, {...productData, amount: 1}] )
 
       } else if (cart[ cartProductIndex ].amount + 1 <= stockProductAmount) {
-          const newCart = cart.filter( product => product.id !== productId )
-          const newProduct = {...cart[ cartProductIndex ]}
+        const newCart = cart.filter( product => product.id !== productId )
+        const newProduct = { ...cart[ cartProductIndex ]}
 
-          newProduct.amount += 1
-          
-          setCart([...newCart, newProduct])
+        newProduct.amount += 1
+        
+        setCart( [...newCart, newProduct] )
 
       } else {
         throw 'Quantidade solicitada fora de estoque'
@@ -61,7 +61,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
      
     } catch (e) {
       if (e.name) {
-        toast.error('Erro na adição de produto')
+        toast.error( 'Erro na adição de produto' )
       } else {
         toast.error(e)
       }
@@ -70,9 +70,11 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      // TODO
+      const newCart = cart.filter(product => product.id !== productId)
+      setCart(newCart)
+
     } catch {
-      // TODO
+      toast.error('Erro na remoção do produto')
     }
   };
 
