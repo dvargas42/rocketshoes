@@ -32,11 +32,39 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     return [];
   });
 
+  localStorage.setItem('@RocketShoes:cart', JSON.stringify( cart ))
+
   const addProduct = async (productId: number) => {
     try {
-      // TODO
-    } catch {
-      // TODO
+      const stockProductAmount = await api.get(`stocks/${productId}`)
+        .then(response => response.data.amount)
+      
+      const cartProductIndex = cart.findIndex(product => product.id === productId)
+
+      if (cartProductIndex === -1){
+        const productData: Product = await api.get(`products/${productId}`)
+          .then(response => response.data)
+
+        setCart( [...cart, {...productData, amount: 1}] )
+
+      } else if (cart[ cartProductIndex ].amount + 1 <= stockProductAmount) {
+          const newCart = cart.filter( product => product.id !== productId )
+          const newProduct = {...cart[ cartProductIndex ]}
+
+          newProduct.amount += 1
+          
+          setCart([...newCart, newProduct])
+
+      } else {
+        throw 'Quantidade solicitada fora de estoque'
+      }
+     
+    } catch (e) {
+      if (e.name) {
+        toast.error('Erro na adição de produto')
+      } else {
+        toast.error(e)
+      }
     }
   };
 
