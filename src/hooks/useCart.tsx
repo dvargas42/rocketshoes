@@ -36,29 +36,35 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const addProduct = async (productId: number) => {
     try {
-      const stockProductAmount = await api.get(`stock/${productId}`)
-        .then(response => response.data.amount)
+      const stockProduct: Stock = await api.get(`stock/${productId}`)
+        .then(response => response.data)
       
-      const cartProductIndex = cart.findIndex(product => product.id === productId)
+      const cartProduct = cart.find(product => product.id === productId)
 
-      if (cartProductIndex === -1){
-        const productData: Product = await api.get(`products/${productId}`)
-          .then(response => response.data)
+      if (!cartProduct) {
+        const product = await api.get(`products/${productId}`)
+        .then(response => response.data)
 
-        setCart( [...cart, {...productData, amount: 1}] )
+        const newProduct: Product = { ...product, amount: 1 }
 
-      } else if (cart[ cartProductIndex ].amount + 1 <= stockProductAmount) {
-        const newCart = cart.filter( product => product.id !== productId )
-        const newProduct = { ...cart[ cartProductIndex ]}
+        setCart([...cart, newProduct])
 
-        newProduct.amount += 1
+      } else if (stockProduct.amount >= cartProduct.amount + 1) {
+        const newProduct = { ...cartProduct }
+        newProduct.amount += 1;
+
+        const newCart = cart.filter(product => {
+          if (product.id !== productId)
+            return product;
+          else
+            return newProduct;
+        })
+        setCart(newCart);
         
-        setCart( [...newCart, newProduct] )
-
       } else {
         throw 'Quantidade solicitada fora de estoque'
       }
-     
+    
     } catch (e) {
       if (e.name) {
         toast.error( 'Erro na adição de produto' )
@@ -83,19 +89,19 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      const stockProductAmount = await api.get(`stock/${productId}`)
+      const stockProductAmount = await api.get( `stock/${productId}` )
         .then(response => response.data.amount)
 
-      const cartProduct = cart.find(product => product.id === productId)
+      const cartProduct = cart.find( product => product.id === productId )
 
       if (!cartProduct) {
         throw 'Erro na alteração de quantidade do produto'
 
       } else if (amount + cartProduct.amount <= stockProductAmount) {
-        const newCartProduct = {...cartProduct}
+        const newCartProduct = { ...cartProduct }
         newCartProduct.amount += amount;
 
-        const newCart = cart.filter(product => {
+        const newCart = cart.filter( product => {
           if (product.id !== productId)
             return product;
           else
