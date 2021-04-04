@@ -83,9 +83,32 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      // TODO
-    } catch {
-      // TODO
+      const stockProductAmount = await api.get(`stock/${productId}`)
+        .then(response => response.data.amount)
+
+      const cartProduct = cart.find(product => product.id === productId)
+
+      if (!cartProduct) {
+        throw 'Erro na alteração de quantidade do produto'
+
+      } else if (amount + cartProduct.amount <= stockProductAmount) {
+        const newCartProduct = {...cartProduct}
+        newCartProduct.amount += amount;
+
+        const newCart = cart.filter(product => {
+          if (product.id !== productId)
+            return product;
+          else
+            return newCartProduct
+        })
+        setCart(newCart)
+
+      } else {
+        throw 'Erro na alteraação de quantidade do produto'
+      }
+
+    } catch (e){
+      toast.error(e)
     }
   };
 
