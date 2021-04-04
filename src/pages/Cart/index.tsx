@@ -26,14 +26,13 @@ const Cart = (): JSX.Element => {
     subTotal: formatPrice(product.price * product.amount),
   }))
 
-  const total =
-   // formatPrice(
-  //     cart.reduce((sumTotal, product) => {
-  //       // TODO
-  //     }, 0)
-  //   )
+  const total = formatPrice(
+    cart.reduce((sumTotal, product) => {
+      return sumTotal += product.price * product.amount;
+    }, 0)
+  )
 
-  function handleProductIncrement(product: Product) {
+  function handleProductIncrement(product: Product) { 
     // TODO
   }
 
@@ -71,7 +70,7 @@ const Cart = (): JSX.Element => {
                 <button
                   type="button"
                   data-testid="decrement-product"
-                // disabled={product.amount <= 1}
+                  disabled={product.amount <= 1}
                 // onClick={() => handleProductDecrement()}
                 >
                   <MdRemoveCircleOutline size={20} />
