@@ -32,7 +32,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     return [];
   });
 
-  localStorage.setItem('@RocketShoes:cart', JSON.stringify( cart ))
+  localStorage.setItem('@RocketShoes:cart', JSON.stringify( []))
 
   const addProduct = async (productId: number) => {
     try {
@@ -50,9 +50,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart([...cart, newProduct])
 
       } else if (stockProduct.amount >= cartProduct.amount + 1) {
-        const newProduct = { ...cartProduct }
-        newProduct.amount += 1;
-
+        const newProduct: Product = {
+          id: cartProduct.id,
+          title: cartProduct.title,
+          price: cartProduct.price,
+          image: cartProduct.image,
+          amount: ++cartProduct.amount,
+        }
+        
         const newCart = cart.filter(product => {
           if (product.id !== productId)
             return product;
@@ -60,7 +65,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
             return newProduct;
         })
         setCart(newCart);
-        
+
       } else {
         throw 'Quantidade solicitada fora de estoque'
       }
@@ -98,8 +103,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         throw 'Erro na alteração de quantidade do produto'
 
       } else if (amount + cartProduct.amount <= stockProductAmount) {
-        const newCartProduct = { ...cartProduct }
-        newCartProduct.amount += amount;
+        const newCartProduct = {
+          id: cartProduct.id,
+          title: cartProduct.title,
+          price: cartProduct.price,
+          image: cartProduct.image,
+          amount: ++ cartProduct.amount,
+        }
 
         const newCart = cart.filter( product => {
           if (product.id !== productId)
