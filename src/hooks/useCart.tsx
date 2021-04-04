@@ -120,7 +120,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart(newCart)
 
       } else {
-        throw 'Erro na alteraação de quantidade do produto'
+        throw 'Quantidade solicitada fora de estoque'
       }
 
     } catch (e){
