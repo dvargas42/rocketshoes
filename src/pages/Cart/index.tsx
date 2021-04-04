@@ -32,16 +32,16 @@ const Cart = (): JSX.Element => {
     }, 0)
   )
 
-  function handleProductIncrement(product: Product) { 
-    // TODO
+  function handleProductIncrement(product: Product) {
+    updateProductAmount({productId: product.id, amount:1});
   }
 
   function handleProductDecrement(product: Product) {
-    // TODO
+    updateProductAmount({productId: product.id, amount:-1});
   }
 
   function handleRemoveProduct(productId: number) {
-    // TODO
+    removeProduct(productId)
   }
 
   return (
@@ -70,7 +70,7 @@ const Cart = (): JSX.Element => {
                 <button
                   type="button"
                   data-testid="decrement-product"
-                  disabled={product.amount <= 1}
+                  //disabled={product.amount <= 1}
                 // onClick={() => handleProductDecrement()}
                 >
                   <MdRemoveCircleOutline size={20} />
