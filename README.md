@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Logo" src="./src/assets/images/logo.svg" width="400px">
+  <img alt="Logo" src="https://res.cloudinary.com/dvargas42/image/upload/v1617609000/rockeshoes/logo_tlvzhr.svg" width="400px">
 </h1>
 
 <h3 align="center">
