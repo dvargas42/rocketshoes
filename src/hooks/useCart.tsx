@@ -32,7 +32,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     return [];
   });
 
-
   const addProduct = async (productId: number) => {
     try {
       const stockProduct: Stock = await api.get(`stock/${productId}`)
