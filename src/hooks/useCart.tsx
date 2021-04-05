@@ -32,7 +32,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     return [];
   });
 
-  localStorage.setItem('@RocketShoes:cart', JSON.stringify( []))
+  localStorage.setItem('@RocketShoes:cart', JSON.stringify(cart))
 
   const addProduct = async (productId: number) => {
     try {
@@ -50,19 +50,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart([...cart, newProduct])
 
       } else if (stockProduct.amount >= cartProduct.amount + 1) {
-        const newProduct: Product = {
-          id: cartProduct.id,
-          title: cartProduct.title,
-          price: cartProduct.price,
-          image: cartProduct.image,
-          amount: ++cartProduct.amount,
-        }
-        
+        cartProduct.amount += 1
+
         const newCart = cart.filter(product => {
           if (product.id !== productId)
             return product;
           else
-            return newProduct;
+            return cartProduct;
         })
         setCart(newCart);
 
@@ -94,28 +88,25 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      const stockProductAmount = await api.get( `stock/${productId}` )
-        .then(response => response.data.amount)
+      const stockProduct = await api.get( `stock/${productId}` )
+        .then(response => response.data)
 
       const cartProduct = cart.find( product => product.id === productId )
 
       if (!cartProduct) {
         throw 'Erro na alteração de quantidade do produto'
 
-      } else if (amount + cartProduct.amount <= stockProductAmount) {
-        const newCartProduct = {
-          id: cartProduct.id,
-          title: cartProduct.title,
-          price: cartProduct.price,
-          image: cartProduct.image,
-          amount: ++ cartProduct.amount,
-        }
+      } else if (amount + cartProduct.amount <= 0) {
+        return;
+
+      } else if (stockProduct.amount >= amount + cartProduct.amount) {
+        cartProduct.amount += amount;
 
         const newCart = cart.filter( product => {
           if (product.id !== productId)
             return product;
           else
-            return newCartProduct
+            return cartProduct
         })
         setCart(newCart)
 
