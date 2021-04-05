@@ -10,23 +10,23 @@
 
 <p align="center">
 
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dvargas42/rocketshoes?color=%B900FF00">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dvargas42/rocketshoes?color=blueviolet">
 
   <a href="https://www.linkedin.com/in/daniel-santos-040983ab/" target="_blank" rel="noopener noreferrer">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Daniel%20Vargas-%B900FF00">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Daniel%20Vargas-blueviolet">
   </a>
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/dvargas42/rocketshoes?color=%B900FF00">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/dvargas42/rocketshoes?color=blueviolet">
 
   <a href="https://github.com/dvargas42/rocketshoes/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dvargas42/rocketshoes?color=%B900FF00">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dvargas42/rocketshoes?color=blueviolet">
   </a>
 
   <a href="https://github.com/dvargas42/rocketshoes/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/dvargas42/rocketshoes?color=%B900FF00">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/dvargas42/rocketshoes?color=blueviolet">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/dvargas42/rocketshoes?color=%B900FF00">
+  <img alt="GitHub" src="https://img.shields.io/github/license/dvargas42/rocketshoes?color=blueviolet">
 </p>
 
 
