@@ -1,32 +1,32 @@
 <h1 align="center">
-  <img alt="Logo" src="https://res.cloudinary.com/dvargas42/image/upload/v1617609000/rockeshoes/logo_tlvzhr.svg" width="400px">
+  <img alt="Logo" src="https://res.cloudinary.com/dvargas42/image/upload/v1617609000/rockeshoes/logo_tlvzhr.svg" width="500px">
 </h1>
 
 <h3 align="center">
-  React Application for Footwear virtual store
+  React Application for footwear virtual store
 </h3>
 
 <p align="center">The best way to buy your shoes!</p>
 
 <p align="center">
 
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dvargas42/rocketshoes?color=%33cc9500">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dvargas42/rocketshoes?color=%B900FF00">
 
   <a href="https://www.linkedin.com/in/daniel-santos-040983ab/" target="_blank" rel="noopener noreferrer">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Daniel%20Vargas-%33cc9500">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Daniel%20Vargas-%B900FF00">
   </a>
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/dvargas42/rocketshoes?color=%33cc9500">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/dvargas42/rocketshoes?color=%B900FF00">
 
   <a href="https://github.com/dvargas42/rocketshoes/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dvargas42/rocketshoes?color=%33cc9500">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dvargas42/rocketshoes?color=%B900FF00">
   </a>
 
   <a href="https://github.com/dvargas42/rocketshoes/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/dvargas42/rocketshoes?color=%33cc9500">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/dvargas42/rocketshoes?color=%B900FF00">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/dvargas42/rocketshoes?color=%33cc9500">
+  <img alt="GitHub" src="https://img.shields.io/github/license/dvargas42/rocketshoes?color=%B900FF00">
 </p>
 
 
@@ -70,9 +70,9 @@ Technologies that I used to develop this api
 - [TypeScript](https://www.typescriptlang.org/)
 - [JSON Server](https://github.com/typicode/json-server)
 - [Axios](https://github.com/axios/axios)
-- [Styled-Components](https://styled-components.com/)
-- [react-toastify](https://github.com/fkhadra/react-toastify)
-- [localStorage API](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage)
+- [Styled Components](https://styled-components.com/)
+- [React toastify](https://github.com/fkhadra/react-toastify)
+- [Local Storage API](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage)
 
 ## 💻 Getting started
 
