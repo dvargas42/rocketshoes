@@ -94,7 +94,7 @@ $ git clone https://github.com/dvargas42/rocketshoes.git
 $ yarn
 
 # Run the the fake api service
-$ yarn start
+$ yarn server
 
 # To finish, run the webapp 
 $ yarn start
@@ -110,7 +110,7 @@ $ yarn start
 # Fork using GitHub official command line
 # If you don't have the GitHub CLI, use the web site to do that.
 
-$ gh repo fork dvargas42/dvmoney
+$ gh repo fork dvargas42/rocketshoes
 ```
 
 **Follow the steps below**
